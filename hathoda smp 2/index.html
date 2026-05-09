@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hathoda SMP</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#050505;
+color:white;
+overflow-x:hidden;
+}
+
+body::-webkit-scrollbar{
+width:10px;
+}
+
+body::-webkit-scrollbar-thumb{
+background:orange;
+border-radius:20px;
+}
+
+.bg1{
+position:fixed;
+width:700px;
+height:700px;
+background:rgba(255,140,0,0.2);
+filter:blur(120px);
+border-radius:50%;
+left:-200px;
+top:-100px;
+z-index:-1;
+animation:float 8s infinite;
+}
+
+.bg2{
+position:fixed;
+width:600px;
+height:600px;
+background:rgba(255,0,0,0.15);
+filter:blur(120px);
+border-radius:50%;
+right:-200px;
+bottom:-100px;
+z-index:-1;
+animation:float 10s infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0px);}
+50%{transform:translateY(-40px);}
+100%{transform:translateY(0px);}
+}
+
+@keyframes pulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.1);}
+100%{transform:scale(1);}
+}
+
+@keyframes rotate{
+from{transform:rotate(0deg);}
+to{transform:rotate(360deg);}
+}
+
+header{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+position:relative;
+}
+
+.ring{
+position:absolute;
+width:1000px;
+height:1000px;
+border:1px solid rgba(255,140,0,0.1);
+border-radius:50%;
+animation:rotate 40s linear infinite;
+}
+
+h1{
+font-size:7rem;
+font-weight:900;
+line-height:1;
+text-shadow:0 0 12px rgba(255,140,0,0.45);
+}
+
+h1 span{
+color:orange;
+}
+
+.hero-text{
+max-width:1000px;
+margin-top:40px;
+font-size:1.4rem;
+line-height:2;
+color:#d0d0d0;
+}
+
+.buttons{
+display:flex;
+gap:25px;
+margin-top:50px;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.btn{
+padding:20px 45px;
+font-size:1.1rem;
+font-weight:700;
+border-radius:18px;
+text-decoration:none;
+transition:0.4s;
+}
+
+.main-btn{
+background:orange;
+color:black;
+box-shadow:0 0 40px rgba(255,140,0,0.5);
+}
+
+.main-btn:hover{
+transform:scale(1.1);
+box-shadow:0 0 80px rgba(255,140,0,1);
+}
+
+.outline-btn{
+border:2px solid orange;
+color:orange;
+}
+
+.outline-btn:hover{
+background:rgba(255,140,0,0.1);
+transform:scale(1.08);
+}
+
+.release-box{
+margin-top:70px;
+padding:30px 70px;
+border-radius:30px;
+background:rgba(20,20,20,0.8);
+border:1px solid rgba(255,140,0,0.3);
+backdrop-filter:blur(10px);
+animation:pulse 5s infinite;
+}
+
+.release-box h2{
+font-size:4rem;
+color:orange;
+}
+
+section{
+padding:120px 8%;
+}
+
+.title{
+font-size:3.8rem;
+font-weight:900;
+text-align:center;
+margin-bottom:80px;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:35px;
+}
+
+.card{
+background:rgba(20,20,20,0.85);
+border:1px solid rgba(255,140,0,0.2);
+padding:40px;
+border-radius:30px;
+transition:0.4s;
+box-shadow:0 0 30px rgba(255,140,0,0.08);
+}
+
+.card:hover{
+transform:translateY(-12px) scale(1.04);
+box-shadow:0 0 60px rgba(255,140,0,0.35);
+}
+
+.icon{
+font-size:4rem;
+margin-bottom:20px;
+}
+
+.card h3{
+font-size:2rem;
+margin-bottom:20px;
+color:orange;
+}
+
+.card p{
+line-height:1.9;
+color:#d0d0d0;
+}
+
+.mace-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+gap:60px;
+align-items:center;
+}
+
+.mace-ball{
+width:300px;
+height:300px;
+border-radius:50%;
+background:linear-gradient(135deg,orange,red,gold);
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:10rem;
+margin:auto;
+box-shadow:0 0 120px rgba(255,140,0,0.8);
+animation:float 4s infinite;
+}
+
+.power{
+background:rgba(20,20,20,0.8);
+padding:20px;
+border-radius:20px;
+margin-top:20px;
+border:1px solid rgba(255,140,0,0.2);
+font-size:1.1rem;
+}
+
+.timeline{
+position:relative;
+max-width:900px;
+margin:auto;
+}
+
+.timeline::after{
+content:'';
+position:absolute;
+width:6px;
+background:orange;
+top:0;
+bottom:0;
+left:50%;
+margin-left:-3px;
+}
+
+.container{
+padding:20px 40px;
+position:relative;
+width:50%;
+}
+
+.container.left{
+left:0;
+}
+
+.container.right{
+left:50%;
+}
+
+.content{
+background:rgba(20,20,20,0.85);
+padding:30px;
+border-radius:25px;
+border:1px solid rgba(255,140,0,0.2);
+}
+
+.content h3{
+color:orange;
+margin-bottom:15px;
+font-size:2rem;
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:30px;
+text-align:center;
+}
+
+.stat-box{
+background:rgba(20,20,20,0.8);
+padding:40px;
+border-radius:25px;
+border:1px solid rgba(255,140,0,0.2);
+}
+
+.stat-box h2{
+font-size:5rem;
+color:orange;
+}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+}
+
+.gallery-box{
+height:260px;
+border-radius:25px;
+background:linear-gradient(135deg,#ff6a00,#250000);
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:4rem;
+font-weight:900;
+transition:0.4s;
+}
+
+.gallery-box:hover{
+transform:scale(1.05);
+}
+
+footer{
+padding:120px 20px;
+text-align:center;
+border-top:1px solid rgba(255,140,0,0.15);
+}
+
+footer h2{
+font-size:5rem;
+font-weight:900;
+}
+
+footer h2 span{
+color:orange;
+}
+
+footer p{
+margin-top:25px;
+font-size:1.2rem;
+color:#999;
+max-width:900px;
+margin-inline:auto;
+line-height:2;
+}
+
+@media(max-width:900px){
+h1{font-size:5rem;}
+.title{font-size:3rem;}
+.timeline::after{left:20px;}
+.container{width:100%;padding-left:70px;padding-right:20px;}
+.container.right{left:0;}
+.mace-ball{width:280px;height:280px;font-size:7rem;}
+footer h2{font-size:3rem;}
+}
+.hero-title{animation:heroZoom 2s ease;filter:none;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}@keyframes heroZoom{0%{opacity:0;transform:scale(0.6) translateY(100px);}100%{opacity:1;transform:scale(1) translateY(0);}}.fade-up{opacity:0;transform:translateY(80px);transition:all 1s ease;}.fade-up.show{opacity:1;transform:translateY(0);}.particles{position:fixed;width:100%;height:100%;top:0;left:0;pointer-events:none;z-index:-1;overflow:hidden;}.particle{position:absolute;width:6px;height:6px;background:orange;border-radius:50%;animation:particleFloat linear infinite;opacity:0.6;}@keyframes particleFloat{0%{transform:translateY(100vh) scale(0);}100%{transform:translateY(-100vh) scale(1);}}.navbar{position:fixed;top:0;left:0;width:100%;padding:20px 8%;display:flex;justify-content:space-between;align-items:center;background:rgba(0,0,0,0.5);backdrop-filter:blur(12px);z-index:999;border-bottom:1px solid rgba(255,140,0,0.15);}.logo{font-size:2rem;font-weight:900;color:white;}.logo span{color:orange;}.nav-links{display:flex;gap:25px;}.nav-links a{color:#ddd;text-decoration:none;font-weight:600;transition:0.3s;}.nav-links a:hover{color:orange;}</style>
+</head>
+<body id="top"><div class="particles"><div class="particle" style="left:10%;animation-duration:8s;"></div><div class="particle" style="left:20%;animation-duration:12s;"></div><div class="particle" style="left:35%;animation-duration:10s;"></div><div class="particle" style="left:50%;animation-duration:7s;"></div><div class="particle" style="left:65%;animation-duration:14s;"></div><div class="particle" style="left:80%;animation-duration:9s;"></div><div class="particle" style="left:90%;animation-duration:11s;"></div></div><nav class="navbar"><div class="logo">HATHODA <span>SMP</span></div><div class="nav-links"><a href="#top">Home</a><a href="#events">Events</a><a href="#top" onclick="comingSoon()">Join</a></div></nav>
+
+<div class="bg1"></div>
+<div class="bg2"></div>
+
+<header>
+<div class="ring"></div>
+
+<h1 class="hero-title">HATHODA <span>SMP</span></h1>
+
+<p class="hero-text">
+Deep beneath the dangerous world of Hathoda SMP lies the legendary mace that every warrior dreams of controlling.
+Only ONE player can own its forbidden custom powers. Kingdoms will rise, alliances will break and entire clans will start wars for domination.
+Every decision matters. Every battle changes history. Massive PvP events, boss fights, treasure hunts, custom enchantments and nonstop chaos await the strongest survivors.
+The war officially begins on 1 June 2026.
+</p>
+
+<div class="buttons">
+<a href="#" class="btn main-btn" onclick="comingSoon()">JOIN THE WAR</a>
+<a href="#events" class="btn outline-btn">VIEW EVENTS</a>
+</div>
+
+<div class="release-box">
+<p>OFFICIAL GLOBAL RELEASE</p>
+<h2>1 JUNE 2026</h2>
+</div>
+</header>
+
+<section class="fade-up">
+<h2 class="title">WHY PLAY HATHODA SMP?</h2>
+
+<div style="max-width:1200px;margin:auto;text-align:center;color:#cfcfcf;font-size:1.3rem;line-height:2.2;margin-bottom:80px;">
+Hathoda SMP is not just another Minecraft survival server. It is a dangerous world where every player fights for power, rare loot and the legendary mace. Massive wars between clans, surprise world events, custom abilities and nonstop PvP action make every moment intense. Every battle matters. Every victory changes the server history forever.
+</div>
+<div class="cards">
+<div class="card">
+<div class="icon">⚒️</div>
+<h3>THE ONLY MACE</h3>
+<p>Only one player can own the legendary mace with dangerous custom enchantments and powerful abilities.</p>
+</div>
+
+<div class="card">
+<div class="icon">🔥</div>
+<h3>MASSIVE EVENTS</h3>
+<p>Daily events including PvP tournaments, clan wars, boss fights and treasure hunts.</p>
+</div>
+
+<div class="card">
+<div class="icon">👑</div>
+<h3>BECOME A LEGEND</h3>
+<p>Create your kingdom, dominate enemies and become the strongest warrior in the SMP.</p>
+</div>
+</div>
+</section>
+
+<section class="fade-up">
+<div class="mace-grid">
+<div>
+<h2 class="title" style="text-align:left;margin-bottom:20px;">THE LEGENDARY MACE</h2>
+<p style="line-height:2;color:#d0d0d0;font-size:1.2rem;">
+The legendary Hathoda Mace was forged in ancient fire and contains powers never seen before.
+Whoever controls it controls the server.
+</p>
+
+<div class="power">⚡ Thunder Smash Enchantment</div>
+<div class="power">🔥 Fire Shockwave Ability</div>
+<div class="power">💀 Rage Mode Power</div>
+<div class="power">👑 King Slayer Bonus</div>
+<div class="power">🌪️ Earthquake Slam</div>
+</div>
+
+<div class="mace-ball">⚒️</div>
+</div>
+</section>
+
+<section id="events">
+<div style="text-align:center;margin-bottom:70px;">
+<a href="#top" class="btn outline-btn">BACK TO TOP</a>
+</div>
+<h2 class="title">EPIC SERVER EVENTS</h2>
+<div class="cards">
+<div class="card">
+<div class="icon">🏆</div>
+<h3>PVP TOURNAMENTS</h3>
+<p>Battle the strongest players and win legendary loot and rare rewards.</p>
+</div>
+
+<div class="card">
+<div class="icon">🐉</div>
+<h3>BOSS FIGHTS</h3>
+<p>Dangerous bosses appear with powerful drops and exclusive items.</p>
+</div>
+
+<div class="card">
+<div class="icon">💎</div>
+<h3>TREASURE HUNTS</h3>
+<p>Hidden treasures across the world waiting for fearless explorers.</p>
+</div>
+
+<div class="card">
+<div class="icon">⚔️</div>
+<h3>CLAN WARS</h3>
+<p>Fight with your team and conquer enemy kingdoms in massive wars.</p>
+</div>
+
+<div class="card">
+<div class="icon">🎁</div>
+<h3>DROP PARTIES</h3>
+<p>Special drop events with rare gear and exciting surprises.</p>
+</div>
+
+<div class="card">
+<div class="icon">🌍</div>
+<h3>WORLD EVENTS</h3>
+<p>Unexpected world-changing events that affect every player online.</p>
+</div>
+</div>
+</section>
+
+<section class="fade-up">
+<h2 class="title">SERVER ROADMAP</h2>
+<div class="timeline">
+<div class="container left">
+<div class="content">
+<h3>APRIL 2026</h3>
+<p>Server development and custom plugin creation begins.</p>
+</div>
+</div>
+
+<div class="container right">
+<div class="content">
+<h3>MAY 2026</h3>
+<p>Private beta testing and balancing of the legendary mace.</p>
+</div>
+</div>
+
+<div class="container left">
+<div class="content">
+<h3>1 JUNE 2026</h3>
+<p>Official worldwide release of Hathoda SMP.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="fade-up">
+<h2 class="title">SERVER STATS</h2>
+<div class="stats">
+<div class="stat-box">
+<h2>1</h2>
+<p>Legendary Mace</p>
+</div>
+
+<div class="stat-box">
+<h2>24/7</h2>
+<p>Server Online</p>
+</div>
+
+<div class="stat-box">
+<h2>100%</h2>
+<p>Pure Chaos</p>
+</div>
+
+<div class="stat-box">
+<h2>∞</h2>
+<p>Epic Battles</p>
+</div>
+</div>
+</section>
+
+<section class="fade-up">
+<h2 class="title">SERVER GALLERY</h2>
+<div class="gallery">
+<a href="#top" style="text-decoration:none;color:white;"><div class="gallery-box">🏰</div></a>
+<a href="#events" style="text-decoration:none;color:white;"><div class="gallery-box">⚡</div></a>
+<div class="gallery-box">⚒️</div>
+<div class="gallery-box">🔥</div>
+<div class="gallery-box">⚔️</div>
+<div class="gallery-box">👑</div>
+<div class="gallery-box">💀</div>
+<div class="gallery-box">🐉</div>
+</div>
+</section>
+
+<footer>
+<h2>ARE YOU READY TO <span>RULE?</span></h2>
+<p>
+The world of Hathoda SMP is waiting.
+Gather your clan, sharpen your weapons and prepare for the biggest Minecraft survival war.
+Only the strongest players will survive the battle for the legendary mace.
+</p>
+
+<div class="buttons">
+<a href="#" class="btn main-btn" onclick="comingSoon()">ENTER THE SMP</a>
+</div>
+
+<p style="margin-top:60px;">
+© 2026 Hathoda SMP • All Rights Reserved
+</p>
+</footer>
+
+<script>const observer=new IntersectionObserver((entries)=>{entries.forEach((entry)=>{if(entry.isIntersecting){entry.target.classList.add('show');}});});document.querySelectorAll('.fade-up').forEach((el)=>observer.observe(el));
+function comingSoon(){
+alert('⚒️ HATHODA SMP IS COMING SOON!\n\nOfficial Release: 1 June 2026\n\nPrepare for the WAR ⚔️');
+}
+</script>
+
+</body>
+</html>
